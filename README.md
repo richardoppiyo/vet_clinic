@@ -62,6 +62,7 @@ Give a ⭐️ if you like this project!
 - Hat tip to anyone whose code was used
 - Inspiration
 - etc
+-Code reviewers,My stand up team members and coding partner
 
 ## 📝 License
 
