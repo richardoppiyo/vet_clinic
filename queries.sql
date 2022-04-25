@@ -31,9 +31,7 @@ FROM animals
 WHERE (weight_kg BETWEEN 10.4  AND 17.3);
 
 
-
-
---TRANSACTION 1
+--FIRST TRANSACTION
 BEGIN;
 
 UPDATE animals
@@ -47,7 +45,7 @@ SELECT *
 FROM animals;
 
 
---TRANSACTION 2
+--SECOND TRANSACTION 
 BEGIN;
 
 UPDATE animals
@@ -65,7 +63,7 @@ FROM animals;
 
 
 
---TRANSACTION 3
+--THIRD TRANSACTION 
 BEGIN;
 
 DELETE FROM animals;
@@ -76,7 +74,7 @@ SELECT *
 FROM animals;
 
 
---TRANSACTION 4
+--TFOURTH RANSACTION 
 BEGIN;
 
 DELETE FROM animals
