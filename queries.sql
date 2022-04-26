@@ -171,4 +171,71 @@ INNER JOIN owners ON animals.owner_id = owners.id
 SELECT COUNT(owner_id) as freq, full_name
 FROM animals
 INNER JOIN owners ON owner_id = owners.id
-GROUP BY full_name
+GROUP BY full_name;
+
+
+
+SELECT DISTINCT ON (date_of_visit)
+       date_of_visit,animal_name  
+FROM   visits
+WHERE date_of_visit IS NOT NULL
+ORDER  BY date_of_visit  DESC
+LIMIT 1;
+
+SELECT COUNT(animal_name),vet_name
+FROM   visits
+WHERE date_of_visit IS NOT NULL AND vet_name = 'Stephanie Mendez'
+GROUP BY vet_name;
+
+SELECT name,species_name as speciality
+FROM vets 
+LEFT JOIN specializations ON vets.id = vet_id
+GROUP BY name,species_name
+
+
+SELECT animal_name,vet_name,date_of_visit
+FROM   visits
+WHERE (date_of_visit BETWEEN '1-Apr-2020'  AND '30-Aug-2020') AND vet_name = 'Stephanie Mendez'
+GROUP BY animal_name,vet_name,date_of_visit;
+
+
+SELECT COUNT(animal_name) AS name_count,animal_name
+FROM  visits
+WHERE date_of_visit IS NOT NULL
+GROUP BY animal_name
+ORDER BY name_count DESC
+LIMIT 1;
+
+
+SELECT DISTINCT ON (date_of_visit)
+       date_of_visit,animal_name ,vet_name
+FROM   visits
+WHERE date_of_visit IS NOT NULL
+ORDER  BY date_of_visit  ASC
+LIMIT 1;
+
+
+SELECT DISTINCT ON (date_of_visit)
+       date_of_visit,animal_name ,vet_name
+FROM   visits
+WHERE date_of_visit IS NOT NULL
+ORDER  BY date_of_visit  DESC;
+
+SELECT name,species_name as speciality
+FROM vets 
+INNER JOIN specializations ON vets.id = vet_id
+WHERE species_name IS NULL;
+
+SELECT *
+FROM specializations
+WHERE vet_name = 'Maisy Smith'
+
+SELECT DISTINCT species_name
+FROM visits
+INNER JOIN  vets ON vets.id = vet_id
+INNER JOIN specializations  ON vets.id = specializations.vet_id
+WHERE visits.vet_name = 'Maisy Smith' AND date_of_visit IS NOT NULL;
+
+
+
+
