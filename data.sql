@@ -60,4 +60,15 @@ SET owner_id = 5
 WHERE id IN (8,9);
 
 
+INSERT INTO vets(name,age,date_of_graduation)
+VALUES ('William Tatcher',45,'23-Apr-2000'),
+('Maisy Smith',26,'17-Jan-2019'),
+('Stephanie Mendez',64,'4-May-1981'),
+('Jack Harkness',38,'8-Jun-2008');
 
+
+INSERT INTO specializations (species_id,species_name,vet_name,vet_id)
+VALUES (1,'Pokemon','William Tatcher',1),
+(1,'Pokemon','Stephanie Mendez',3),
+(2,'Digimon','Stephanie Mendez',3),
+(2,'Digimon','Jack Harkness',4);
