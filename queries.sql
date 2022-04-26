@@ -167,9 +167,8 @@ SELECT name, full_name as owner_name
 FROM animals
 INNER JOIN owners ON animals.owner_id = owners.id
 
-SELECT MAX(aa.freq)
-FROM 
-	(SELECT COUNT(owner_id) as freq, full_name
-	FROM animals
-	INNER JOIN owners ON owner_id = owners.id
-	GROUP BY full_name) AS aa
+
+SELECT COUNT(owner_id) as freq, full_name
+FROM animals
+INNER JOIN owners ON owner_id = owners.id
+GROUP BY full_name
