@@ -124,3 +124,51 @@ FROM animals
 GROUP BY species,date_of_birth
 HAVING date_of_birth BETWEEN '01-Jan-1990' AND '31-Dec-2000';
 
+--JOINS AND 
+SELECT name, full_name as owner_name
+FROM animals
+INNER JOIN owners ON animals.owner_id = owners.id
+WHERE owners.id =4 
+
+
+
+SELECT name, full_name as owner_name
+FROM animals
+INNER JOIN owners ON animals.owner_id = owners.id
+WHERE owners.id =4 
+
+
+SELECT *
+FROM animals
+INNER JOIN species ON  species_id  = species.id
+WHERE species.id = 1;
+
+SELECT full_name,name
+FROM owners
+LEFT JOIN animals ON  owners.id = owner_id
+
+SELECT COUNT(animals.id),species.name
+FROM animals
+INNER JOIN species ON  species_id  = species.id
+GROUP BY species.name;
+
+SELECT animals.name, full_name as owner_name,species
+FROM animals
+INNER JOIN owners ON animals.owner_id = owners.id
+INNER JOIN species ON species_id  = species.id
+WHERE owners.id = 2 AND species.id = 2
+
+SELECT name, full_name as owner_name,escape_attempts
+FROM animals
+INNER JOIN owners ON animals.owner_id = owners.id
+WHERE owners.id = 5 AND escape_attempts = 0
+
+SELECT name, full_name as owner_name
+FROM animals
+INNER JOIN owners ON animals.owner_id = owners.id
+
+
+SELECT COUNT(owner_id) as freq, full_name
+FROM animals
+INNER JOIN owners ON owner_id = owners.id
+GROUP BY full_name
