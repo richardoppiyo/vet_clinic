@@ -46,3 +46,19 @@ FOREIGN KEY (owner_id)
 REFERENCES owners (id);
 
 
+
+
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4;
+CREATE INDEX visit_index ON visits(animal_id);
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4;
+
+
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2;
+CREATE INDEX vet_index ON visits(vet_id ASC);
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2;
+
+
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
+CREATE INDEX email_index ON owners(email);
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
+
