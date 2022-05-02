@@ -45,7 +45,6 @@ ADD CONSTRAINT fk_owner_id
 FOREIGN KEY (owner_id) 
 REFERENCES owners (id);
 
-
 CREATE TABLE vets(
  	id 					INTEGER GENERATED ALWAYS AS IDENTITY,
 	name				VARCHAR,
@@ -53,7 +52,6 @@ CREATE TABLE vets(
 	date_of_graduation	DATE,
 	PRIMARY KEY(id)
 );
-
 
 
 CREATE TABLE specializations AS 
@@ -69,4 +67,19 @@ INNER JOIN vets ON animals.id = vets.id);
 
 ALTER TABLE visits
 ADD COLUMN date_of_visit DATE;
+
+
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4;
+CREATE INDEX visit_index ON visits(animal_id);
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4;
+
+
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2;
+CREATE INDEX vet_index ON visits(vet_id ASC);
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2;
+
+
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
+CREATE INDEX email_index ON owners(email);
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
 
