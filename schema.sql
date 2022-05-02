@@ -46,3 +46,27 @@ FOREIGN KEY (owner_id)
 REFERENCES owners (id);
 
 
+CREATE TABLE vets(
+ 	id 					INTEGER GENERATED ALWAYS AS IDENTITY,
+	name				VARCHAR,
+	age					INTEGER,
+	date_of_graduation	DATE,
+	PRIMARY KEY(id)
+);
+
+
+
+CREATE TABLE specializations AS 
+(SELECT species.id as species_id,species.name as species_name ,vets.id as vet_id, vets.name as vet_name
+FROM species
+INNER JOIN vets ON species.id = vets.id);
+
+ 
+CREATE TABLE visits AS
+(SELECT animals.id as animal_id,animals.name as animal_name,vets.id as vet_id,vets.name as vet_name
+FROM animals
+INNER JOIN vets ON animals.id = vets.id);
+
+ALTER TABLE visits
+ADD COLUMN date_of_visit DATE;
+
