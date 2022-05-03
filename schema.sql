@@ -83,3 +83,60 @@ EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
 CREATE INDEX email_index ON owners(email);
 EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
 
+
+
+-------TO MAKE ER DIAGRAM using https://dbdiagram.io/
+TABLE animals
+{
+    id integer[pk]
+    name varchar
+    date_of_birth date
+    escape_attempts integer
+    neutered boolean
+    weight_kg integer
+    species_id integer  [ref: > species.id]
+    owner_id integer [ref: > owners.id]
+  }
+
+
+TABLE owners
+{
+    id integer[pk]
+    full_name varchar
+    age integer
+    email varchar
+}
+
+TABLE specializations
+{
+    species_id integer[pk]
+    species_name varchar
+    vet_id integer
+    vet_name varchar
+}
+
+
+TABLE species
+{
+    id integer[pk]
+    name varchar
+}
+
+
+
+TABLE vets
+{
+    id integer
+    name varchar
+    age integer
+    date_of_graduation date
+}
+
+TABLE visits
+{
+    animal_id integer
+    animal_name varchar
+    vet_id integer [ref: > vets.id]
+    vet_name varchar
+    date_of_visit date
+}
